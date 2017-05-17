@@ -1,7 +1,7 @@
 ---
 layout: post
 title: dpkg 处理软件包 xxx (--configure)时出错 解决办法
-category: 软件出错解决办法
+category: 软件出错解决
 keywords: dpkg,configure
 ---
 
