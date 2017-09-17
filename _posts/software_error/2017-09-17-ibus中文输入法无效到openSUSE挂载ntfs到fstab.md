@@ -48,23 +48,25 @@ UUID=0200584300583FB9                           /home                ntfs-3g    
 
 ## 进一步了解/etc/fstab
 修改了半天的/etc/fstab，才发现自己对其了解甚少，于是百度简单了解了下，这里做一个简单的记录。
-> /etc/fstab在系统开机时会被读取，然后按照该配置文件中的设置，进行相应的挂载。
-> /目录要在靠前的位置挂载，因为其他目录均处于/目录下。
-> fstab总计有六列，每列的具体意义如下：
-	>> 第一列 磁盘设备的UUID或者Label，可以使用`ls -l /dev/disk/by-uuid/`和`ls -l /dev/disk/by-label/`或`blkid`等命令进行查看。
-	>> 第二列 设备挂载点，即挂载磁盘到某个目录下，该目录即为该磁盘的topdir。
-	>> 第三列 磁盘文件系统格式，ext2，ext3，ntfs，vfat，btrfs等。
-	>> 第四列 文件系统挂载选项，包括以下几点:
-		>>> rw/ro 读写方式挂载还是只读方式挂载。
-		>>> suid/nosuid 是否允许suid的存在，例如普通用户提升权限。
-		>>> dev/nodev 是否解析文件系统上的块特殊设备。
-		>>> exec/noexec 限制文件系统内是否能够进行"执行"操作
-		>>> auto/noauto 决定在启动时或者mount -a时，此文件系统是否被自动挂载。
-		>>> user/nouser 是否允许用户使用mount命令挂载。
-		>>> async/sync 是否以同步方式运行，即控制修改是否立刻体现到磁盘上，默认是async，即先放到内存缓冲区内，合适的时机写入。
-		>>> nofail设备不存在时不报错。
-	>> 第五列 是否被dump备份命令作用，有0(不做dump)，1(每天dump)，2(不定期dump)三种选择。
-	>> 第六列 是否检验扇区，开机检测，使用fsck，有0(不做检验)，1(最早检验，一般/会设置)，2(1级别检验后检验)三种选择。
+
+* /etc/fstab在系统开机时会被读取，然后按照该配置文件中的设置，进行相应的挂载。
+* /目录要在靠前的位置挂载，因为其他目录均处于/目录下。
+* fstab总计有六列，每列的具体意义如下：
+	+ 第一列 磁盘设备的UUID或者Label，可以使用`ls -l /dev/disk/by-uuid/`和`ls -l /dev/disk/by-label/`或`blkid`等命令进行查看。
+	+ 第二列 设备挂载点，即挂载磁盘到某个目录下，该目录即为该磁盘的topdir。
+	+ 第三列 磁盘文件系统格式，ext2，ext3，ntfs，vfat，btrfs等。
+	+ 第四列 文件系统挂载选项，包括以下几点:
+		- rw/ro 读写方式挂载还是只读方式挂载。
+		- suid/nosuid 是否允许suid的存在，例如普通用户提升权限。
+		- dev/nodev 是否解析文件系统上的块特殊设备。
+		- exec/noexec 限制文件系统内是否能够进行"执行"操作
+		- auto/noauto 决定在启动时或者mount -a时，此文件系统是否被自动挂载。
+		- user/nouser 是否允许用户使用mount命令挂载。
+		- async/sync 是否以同步方式运行，即控制修改是否立刻体现到磁盘上，默认是async，即先放到内存缓冲区内，合适的时机写入。
+		- nofail设备不存在时不报错。
+	+ 第五列 是否被dump备份命令作用，有0(不做dump)，1(每天dump)，2(不定期dump)三种选择。
+	+ 第六列 是否检验扇区，开机检测，使用fsck，有0(不做检验)，1(最早检验，一般/会设置)，2(1级别检验后检验)三种选择。
+
 参考自`man fstab`及[linux之fstab文件详解](http://blog.csdn.net/richerg85/article/details/17917129)，以及[Linux命令-自动挂载文件/etc/fstab功能详解转](http://www.cnblogs.com/qiyebao/p/4484047.html)
 
 ## 简单总结
