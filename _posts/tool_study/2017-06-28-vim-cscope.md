@@ -48,7 +48,7 @@ Usage: cscope [-bcCdehklLqRTuUvV] [-f file] [-F file] [-i file] [-I dir] [-s dir
 ```
 参数比较多，但一般来说`cscope -Rbq`就够用了，R表示递归，默认cscope会进入搜索页面，b可以不进入这个页面，q会生成索引，加快查找速度。
 
-## 4 在vim中添加动态库
+## 4 在vim中添加标记库
 上面执行过后会生成三个文件，cscope.out就是生成的数据库，cscope.in.out和cscope.po.out是q控制对应的索引。使用vim打开项目中某个文件，然后`cscope add cscope.out`就能够识别该数据库，方便后续使用。
 
 ## 5 vim中使用cscope查找
