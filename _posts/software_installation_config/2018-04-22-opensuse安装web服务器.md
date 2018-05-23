@@ -12,7 +12,9 @@ keywords: openSUSE, apache2, php7, mysql
 ## 2 安装配置apache2
 
 `sudo yast2`							--安装apache2及相关组件，同时记得安装php7模块的支持,apache2-mod_php7
+
 `systemctl enable apache2.service`		--允许开机启动
+
 `systemctl start apache2.service`		--启动apache2服务器
 
 `vim /etc/apache2/httpd.conf`			--检查配置文件
@@ -20,6 +22,7 @@ keywords: openSUSE, apache2, php7, mysql
 * 检查配置文件，看DirectoryIndex对应值中是否有index.php
 * 检查/etc/apache2/php7.conf是否存在，在/etc/apache2/httpd.conf中是否被引入
 	+ 内容一般如下
+
 	```
 	 	<IfModule mod_php7.c>
        <FilesMatch "\.ph(p[345]?|tml)$">
@@ -34,8 +37,10 @@ keywords: openSUSE, apache2, php7, mysql
 		</IfModule>
 
 	```
+
 * 如果没有引入，也没有上述文件，可以自己创建类似文件引入
 	httpd.conf.local
+
 	```
 		LoadModule proxy_module /usr/lib64/apache2/mod_proxy.so
 		LoadModule proxy_fcgi_module /usr/lib64/apache2/mod_proxy_fcgi.so
@@ -53,11 +58,16 @@ keywords: openSUSE, apache2, php7, mysql
 
 `sudo yast2`					--进入选择mysql及相关库安装，包括mysql-devel等
 
-systemctl start mysql.service
-mysql -u root -p
-select password('xxxxxx');
+`systemctl start mysql.service`
+
+`mysql -u root -p`
+
+`select password('xxxxxx');`
+
 设置root用户密码，需要密文。
+
 创建新远程用户
+
 执行mysql_secure_installation来保证安全访问。
 
 **注意，要创建普通用户，避免远程用户访问。**
